@@ -1,17 +1,18 @@
 @font-face {
-	font-family: 'Terminus (TTF) for Windows';
-	src: url('terminus.ttf');
+	font-family: 'DejaVu Sans Mono';
+	src: url('font.ttf');
 }
-			
-body { background: black; color: white; font-family: 'Terminus (TTF) for Windows', monospace; font-size: 32px; }
+		
+body {
+	background: black; color: white;
+	font-family: 'DejaVu Sans Mono', monospace; font-size: 26px;
+}
 			
 a { color: inherit; text-decoration: none; cursor: pointer; }
 a:hover { color: yellow; }
-			
-h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: inherit; }
-			
-pre { font-family: inherit; }
-			
+	
+pre { font-family: inherit; font-size: inherit; font-weight: inherit; }
+		
 .box {
 	position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
 	text-align: left;
