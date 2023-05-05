@@ -1,17 +1,78 @@
-@font-face {
-	font-family: 'DejaVu Sans Mono';
-	src: url('font.ttf');
+/* Import Ubuntu font from Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+/* Define some colors and constants */
+
+:root {
+    --oxford-blue: #061a40;
+    --rose: #ff206e;
+    --yellow: #fbff12;
+    --black: #000000;
+    --white: #ffffff;
+    --fadeIn: 0.2s ease;
+    --fadeOut: 0.8s ease;
+    --round: 30px;
 }
-		
+
+/* General webpage settings */
+
 body {
-	background: black; color: white;
-	font-family: 'DejaVu Sans Mono', monospace; font-size: 26px;
+    padding: 64px; margin: 0;
+    background: var(--black); color: var(--white);
+    font-family: 'Noto Sans', sans-serif; font-size: 18px;
 }
-			
-a { color: inherit; text-decoration: none; cursor: pointer; }
-a:hover { color: yellow; }	
-		
-.box {
-	position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
-	text-align: left; white-space: pre;
+
+/* Headings */
+
+h1, h2, h3, h4, h5, h6 { font-weight: 500; }
+
+/* Hyperlinks */
+
+a { font-weight: 500; color: var(--turquoise); text-decoration: none; transition: var(--fadeOut); }
+a:hover { color: var(--yellow); text-decoration: underline; transition: var(--fadeIn); }
+a:active { color: var(--rose); text-decoration: underline; transition: var(--fadeIn); }
+
+/* Horizontal rule */
+
+hr { color: var(--turquoise); width: 50%; }
+
+/* Button */
+
+.button {
+    padding: 16px 24px;
+    box-shadow: 0px 0px 5px var(--oxford-blue);
+    background: var(--oxford-blue); color: var(--white);
+    transition: var(--fadeOut);
 }
+.button:hover {
+    text-decoration: none;
+    box-shadow: 0px 0px 10px var(--yellow);
+    background: var(--yellow); color: var(--black);
+    transition: var(--fadeIn);
+}
+.button:active {
+    text-decoration: none;
+    box-shadow: 0px 0px 10px var(--rose);
+    background: var(--rose); color: var(--white);
+    transition: var(--fadeIn);
+}
+
+/* Avatar */
+
+.avatar { transition: var(--fadeOut); }
+.avatar:hover { box-shadow: 0px 0px 20px var(--white); transition: var(--fadeIn); }
+
+/* Round from left/right */
+
+.roundl { border-radius: var(--round) 0px 0px var(--round); }
+.roundr { border-radius: 0px var(--round) var(--round) 0px; }
+.round { border-radius: var(--round); }
+
+/* Inline */
+
+.inline { display: inline; }
+
+/* Main */
+
+main { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
