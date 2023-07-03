@@ -1,6 +1,6 @@
-/* Import Ubuntu font from Google Fonts */
+/* Import Inter Tight font from Google Fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 /* Define some colors and constants */
 
@@ -9,8 +9,8 @@
     --yellow: #ffff00;
     --black: #000000;
     --white: #ffffff;
-    --fadeIn: 0.1s ease;
-    --fadeOut: 0.4s ease;
+    --fadeIn: 0.5s ease;
+    --fadeOut: 0.5s ease;
     --round: 30px;
 }
 
@@ -19,7 +19,7 @@
 body {
     padding: 64px; margin: 0;
     background: var(--black); color: var(--white);
-    font-family: 'Ubuntu', sans-serif; font-size: 20px;
+    font-family: 'Inter Tight', sans-serif; font-size: 20px;
 }
 
 /* Headings */
