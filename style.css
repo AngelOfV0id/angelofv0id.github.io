@@ -1,78 +1,72 @@
-/* Import Inter Tight font from Google Fonts */
+/* Load fonts from Google Fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
-/* Define some colors and constants */
+/* General body config */
 
 :root {
-    --magenta: #ff00ff;
-    --yellow: #ffff00;
-    --black: #000000;
-    --white: #ffffff;
-    --fadeIn: 0.5s ease;
-    --fadeOut: 0.5s ease;
-    --round: 30px;
+	--fadein: 0.2s;
+	--fadeout: 0.8s;
+	--padding: 16px 32px;
+	--blurbg: blur(16px);
+	--link: orange;
+	--linkactive: magenta;
 }
 
-/* General webpage settings */
+::selection {
+	background: white; color: black;
+}
 
 body {
-    padding: 64px; margin: 0;
-    background: var(--black); color: var(--white);
-    font-family: 'Inter Tight', sans-serif; font-size: 20px;
+	padding: 0; margin: 0;
+	font-family: 'Noto Sans', sans-serif; font-size: 22px;
+	background: url('back.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;
+	background-color: black; color: white;
 }
 
-/* Headings */
+h1, h2, h3, h4, h5, h6 { font-weight: 300; }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 500; }
-
-/* Hyperlinks */
-
-a { font-weight: 500; color: inherit; text-decoration: none; transition: var(--fadeOut); }
-a:hover { color: var(--rose); text-decoration: underline; transition: var(--fadeIn); }
-a:active { color: var(--yellow); text-decoration: underline; transition: var(--fadeIn); }
-
-/* Horizontal rule */
-
-hr { color: inherit; width: 50%; }
-
-/* Button */
-
-.button {
-    padding: 16px 24px;
-    box-shadow: 0px 0px 5px var(--white);
-    background: var(--black); color: var(--white);
-    transition: var(--fadeOut);
+a {
+	cursor: pointer;
+	color: inherit; text-decoration: none;
+	transition: var(--fadeout);
 }
-.button:hover {
-    text-decoration: none;
-    box-shadow: 0px 0px 10px var(--yellow);
-    background: var(--yellow); color: var(--black);
-    transition: var(--fadeIn);
-}
-.button:active {
-    text-decoration: none;
-    box-shadow: 0px 0px 10px var(--rose);
-    background: var(--rose); color: var(--white);
-    transition: var(--fadeIn);
-}
+a:hover { color: var(--link); transition: var(--fadein); }
+a:active { color: var(--linkactive); transition: var(--fadein); }
 
-/* Avatar */
+hr { width: 80%; color: white; }
 
-.avatar { transition: var(--fadeOut); }
-.avatar:hover { box-shadow: 0px 0px 20px var(--white); transition: var(--fadeIn); }
-
-/* Round from left/right */
-
-.roundl { border-radius: var(--round) 0px 0px var(--round); }
-.roundr { border-radius: 0px var(--round) var(--round) 0px; }
-.round { border-radius: var(--round); }
-.fullround { border-radius: 50%; }
-
-/* Inline */
+/* Custom HTML elements */
 
 .inline { display: inline; }
+.flex { display: flex; justify-content: space-between; align-items: center; }
 
-/* Main */
+.cursor {
+	animation: anim_cursor 1s 0s infinite ease;
+}
+@keyframes anim_cursor {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
 
-main { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.blurbg {
+	z-index: -1; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+	backdrop-filter: var(--blurbg);
+}
+
+.box {
+	max-width: 80vw; padding: var(--padding);
+	position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+	text-align: left;
+}
+
+@media screen and (max-width: 1024px)
+{
+	body { font-size: 16px; }
+}
+@media screen and (max-width: 840px)
+{
+	body { font-size: 14px; }
+	.box { width: 100vw; }
+}
