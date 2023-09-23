@@ -1,72 +1,221 @@
-/* Load fonts from Google Fonts */
+/* --- Import fonts from Google Fonts --- */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&family=Noto+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
-/* General body config */
+/* --- Global settings --- */
 
 :root {
-	--fadein: 0.2s;
-	--fadeout: 0.8s;
-	--padding: 16px 32px;
-	--blurbg: blur(16px);
-	--link: orange;
-	--linkactive: magenta;
+	--fadeIn: 0.1s ease;
+	--fadeOut: 0.4s ease;
+	--justFade: 0.5s ease;
+	--shadow: 10px;
+	--blur: blur(20px);
+	--cubeSize: 256px;
+	--cubeGridSize: calc(var(--cubeSize) / 64);
+	--avatarFade: 1s ease;
+}
+
+/* --- Light/dark theme --- */
+
+@media (prefers-color-scheme: light) or (prefers-color-scheme: no-prefer) {
+	:root {
+		--bg: white;
+		--fg: black;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: black;
+		--fg: white;
+	}
 }
 
 ::selection {
-	background: white; color: black;
+	background: var(--fg); color: var(--bg);
 }
+
+/* --- Webpage body settings --- */
 
 body {
+	font-family: 'Noto Sans', system-ui; font-size: 17px;
 	padding: 0; margin: 0;
-	font-family: 'Noto Sans', sans-serif; font-size: 22px;
-	background: url('back.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;
-	background-color: black; color: white;
+	background: var(--bg); color: var(--fg);
+	transition: var(--justFade);
+	animation: animUnfade 0.5s 0s 1 ease forwards;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 300; }
+/* --- HTML5 elements --- */
+
+h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 
 a {
-	cursor: pointer;
-	color: inherit; text-decoration: none;
-	transition: var(--fadeout);
+	cursor: pointer; text-decoration: none;
+	color: inherit;
+	transition: var(--fadeOut);
 }
-a:hover { color: var(--link); transition: var(--fadein); }
-a:active { color: var(--linkactive); transition: var(--fadein); }
-
-hr { width: 80%; color: white; }
-
-/* Custom HTML elements */
-
-.inline { display: inline; }
-.flex { display: flex; justify-content: space-between; align-items: center; }
-
-.cursor {
-	animation: anim_cursor 1s 0s infinite ease;
+a:hover {
+	text-shadow: 0px 0px var(--shadow) var(--fg);
+	transition: var(--fadeIn);
 }
-@keyframes anim_cursor {
-	0% { opacity: 1; }
-	50% { opacity: 0; }
-	100% { opacity: 1; }
+a:active {
+	background: var(--fg); color: var(--bg);
+	box-shadow: 0px 0px var(--shadow) var(--fg);
+	transition: var(--fadeIn);
 }
 
-.blurbg {
-	z-index: -1; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
-	backdrop-filter: var(--blurbg);
+hr { color: var(--active); width: 50%; }
+
+/* --- Custom elements --- */
+
+.mono { font-family: 'Noto Sans Mono', monospace; }
+
+.header, .content {
+	padding: 32px;
+}
+
+.footer {
+	padding: 64px;
+}
+
+.button {
+	padding: 8px 32px; user-select: none; cursor: pointer; text-decoration: none;
+	background: var(--bg); color: var(--fg); border: 1px solid var(--fg);
+	transition: var(--fadeOut);
+}
+.button:hover {
+	background: var(--bg); color: var(--fg); box-shadow: 0px 0px var(--shadow) var(--fg);
+	transition: var(--fadeIn);
+}
+.button:active {
+	background: var(--fg); color: var(--bg); box-shadow: 0px 0px var(--shadow) var(--fg);
+	transition: var(--fadeIn);
 }
 
 .box {
-	max-width: 80vw; padding: var(--padding);
-	position: absolute; left: 50%; top: 0; transform: translateX(-50%);
-	text-align: left;
+	position: relative; left: 50%; transform: translateX(-50%);
+	text-align: left; width: 50%;
+	background: var(--bg); color: var(--fg); box-shadow: 0px 0px var(--shadow) var(--fg);
+}
+.content {
+	border: 1px solid var(--fg);
 }
 
+.menu {
+	position: absolute; left: 0; top: 0; width: 100%; padding: 0;
+	display: flex; justify-content: space-around; align-items: stretch; flex-direction: row; flex-wrap: wrap;
+}
+.menuitem {
+	flex: 1; max-width: 100%; border-radius: 0;
+}
+
+.active {
+	border: 1px solid var(--fg); border-bottom: 1px solid transparent;
+}
+.active:hover {
+	border-bottom: 1px solid var(--fg);
+}
+
+.textcenter { text-align: center; }
+.noselect { user-select: none; }
+
+.screencenter {
+	position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+}
+
+/* --- Some simple but nice animations --- */
+
+@keyframes animUnfade
+{
+	from { opacity: 0; }
+	to { opacity: 1; } 
+}
+
+@keyframes animUnblur
+{
+	from { filter: var(--blur); }
+	to { filter: none; } 
+}
+
+/* --- Decorations --- */
+
+/* ::: Avatar image (me.html) ::: */
+
+.avatar {
+	border: 1px solid var(--fg);
+	animation: animUnblur 2s 0s 1 ease forwards;
+	user-select: none; cursor: pointer;
+	transition: var(--avatarFade);
+}
+.avatar:hover {
+	box-shadow: 0px 0px calc(var(--shadow) * 10) var(--fg);
+	transition: var(--avatarFade);
+}
+
+/* ::: 3D cube (index.html) ::: */
+
+.cubeScene {
+	z-index: -1; position: relative; left: 50%; transform: translateX(-50%);
+    display: flex; justify-content: center; align-items: center;
+    perspective: calc(var(--cubeSize) * 3); perspective-origin: center;
+	padding: calc(var(--cubeSize) * 0.5);
+	animation: animUnblur 2s 0s 1 ease forwards;
+}
+
+.cube, .cubeSide {
+	width: var(--cubeSize); height: var(--cubeSize);
+	user-select: none;
+}
+.cube {
+    position: relative; transform-style: preserve-3d;
+    animation: animCube 30s 0s infinite linear;
+}
+.cubeSide {
+    position: absolute;
+	border: 1px solid var(--fg);
+	background: linear-gradient(to right bottom, var(--fg) 1px, transparent 1px);
+	background-size: var(--cubeGridSize) var(--cubeGridSize);
+}
+.cubeSideFront {
+    transform: rotateY(0deg) translateZ(calc(var(--cubeSize) / 2));
+}
+.cubeSideBack {
+    transform: rotateY(180deg) translateZ(calc(var(--cubeSize) / 2));
+}
+.cubeSideLeft {
+    transform: rotateY(-90deg) translateZ(calc(var(--cubeSize) / 2));
+}
+.cubeSideRight {
+    transform: rotateY(90deg) translateZ(calc(var(--cubeSize) / 2));
+}
+.cubeSideTop {
+    transform: rotateX(90deg) translateZ(calc(var(--cubeSize) / 2));
+}
+.cubeSideBottom {
+    transform: rotateX(-90deg) translateZ(calc(var(--cubeSize) / 2));
+}
+
+@keyframes animCube {
+    to { transform: rotate3d(1, 1, 1, 720deg); }
+}
+
+/* --- Mobile & Desktop adaption settings --- */
+
+@media screen and (max-width: 1440px)
+{
+	.box { width: 75%; }
+}
 @media screen and (max-width: 1024px)
 {
-	body { font-size: 16px; }
+	.button { padding: 8px; }
+	.box { width: 75%; }
 }
-@media screen and (max-width: 840px)
+@media screen and (max-width: 640px)
 {
-	body { font-size: 14px; }
-	.box { width: 100vw; }
+	:root { --cubeSize: 128px; }
+	.header { padding: 8px; }
+	.button { padding: 4px; }
+	.content { padding: 16px; }
+	.menu { flex-direction: column; position: relative; align-items: stretch; }
+	.active { border: 1px solid var(--fg); }
 }
