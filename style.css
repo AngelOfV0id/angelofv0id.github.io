@@ -58,3 +58,22 @@ a:active { text-shadow: var(--shadow) var(--link); transition: var(--fadein); }
 #ascii { cursor: pointer; use-select: none; }
 #ascii { color: var(--link); transition: var(--fadeout); }
 #ascii:hover { text-shadow: var(--shadow) var(--link); transition: var(--fadein); }
+
+/* Micro tweaks for mobile devices */
+
+@media screen and (max-height: 800px)
+{
+	body { font-size: 14px; }
+}
+@media screen and (max-height: 640px)
+{
+	body { font-size: 12px; }
+}
+@media screen and (max-width: 1024px)
+{
+	body { font-size: 14px; }
+}
+@media screen and (max-width: 800px)
+{
+	body { font-size: 12px; }
+}
