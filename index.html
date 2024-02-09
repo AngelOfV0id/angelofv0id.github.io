@@ -3,89 +3,42 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css">
 		<title>AngelOfV0id</title>
-		<style>
-			:root { --bg: white; --fg: black; }
-			@media (prefers-color-scheme: dark)
-			{
-				:root { --bg: #0f0f0f; --fg: white; }
-			}
-			::selection, a:hover { background: var(--fg); color: var(--bg); }
-			body { font-family: monospace; font-size: 16px; background: var(--bg); color: var(--fg); }
-			a { text-decoration: none; color: inherit; }
-			h1, h2, h3, h4, h5, h6 { font-weight: normal; }
-			main { padding: 4em 0em; max-width: 40em; margin-left: auto; margin-right: auto; }
-		</style>
 	</head>
 	<body>
 		<main>
-			<img src="https://avatars.githubusercontent.com/u/129325531?v=4" alt="AngelOfV0id's avatar image" style="width: 256px;"></img>
-			<h1>AngelOfV0id</h1>
-			<p id="info">
-				Hello there. My name is Ivan Movchan, also known as AngelOfV0id. I am 16 years old teenager living in Saint Petersburg.<br>
-				<br>
-				I am fascinated by programming, operating systems and other computer related stuff.
-				Actually, I started my journey more than five years ago as a creator of simplish games and joke programs coded in Basic, Delphi and similar languages.
-				Now I do Windows programming in C and some web design (just for fun).<br>
-				<br>
-				Besides programming, I also love playing piano + guitar and creating electronic music, taking photos, drawing and... dreaming :)<br>
-				<br>
-				That's all for now I guess.
-			</p>
-			<p id="links">
-				&lt;
+			<div class="menu">
+				<h1 class="inline">AngelOfV0id</h1>
+				<h3 class="inline menu">
+					<a href="index.html" class="menuitem">Обо мне</a>
+					<a href="projects.html" class="menuitem">Проекты</a>
+					<a href="https://t.me/AngelOfV0id_Blog" target="_blank" class="menuitem">Блог</a>
+				</h3>
+			</div>
+			<br><br>
+			<img src="https://avatars.githubusercontent.com/u/129325531?v=4" style="width: 256px;">
+			<br><br>
+			Привет. Меня зовут Иван Мовчан (Ivan Movchan), или же AngelOfV0id. Мне <span id="age">undefined</span> лет, живу в Санкт-Петербурге (родом из Мурманска).<br>
+			<br>
+			Разработчик-любитель, интересуюсь операционными системами, увлекаюсь системным программированием для ОС Windows и немного низкоуровневым программированием. В настоящее время активно пишу на C и языке ассемблера (fasm). Немного шарю в веб-дизайне.<br>
+			<br>
+			Более пяти лет занимаюсь музыкой - играю на фортепиано (муз. школа) и гитаре (самоучка), также пробую себя в трекерной музыке. Говоря о любимой мной музыке, предпочитаю русский рок, метал, синти-поп и немного электроники.<br>
+			<br>
+			Помимо компьютеров и музыки, также увлекаюсь любительской фотографией, люблю рисовать и... мечтать :)<br>
+			<br>
+			<h3>
 				<a href="https://github.com/AngelOfV0id" target="_blank">GitHub</a>
-				:::
+				&emsp;
 				<a href="https://t.me/AngelOfV0id" target="_blank">Telegram</a>
-				:::
-				<a href="https://t.me/AngelOfV0id_Blog" target="_blank" id="info_blog">Blog</a>
-				:::
-				<a href="mailto:AngelOfV0id@yandex.ru" target="_blank" id="info_email">E-mail</a>
-				&gt;
-			</p>
-			<p>
-				[
-				<a href="javascript:set_lang(0);">English</a> ::: <a href="javascript:set_lang(1);">Русский</a>
-				]
-			</p>
+				&emsp;
+				<a href="mailto:AngelOfV0id@yandex.ru" target="_blank">E-mail</a>
+			</h3>
 		</main>
 		<script>
-			var eng_info = `
-			Hello there. My name is Ivan Movchan, also known as AngelOfV0id. I am 16 years old teenager living in Saint Petersburg.<br>
-			<br>
-			I am fascinated by programming, operating systems and other computer related stuff.
-			Actually, I started my journey more than five years ago as a creator of simplish games and joke programs coded in Basic, Delphi and similar languages.
-			Now I do Windows programming in C and some web design (just for fun).<br>
-			<br>
-			Besides programming, I also love playing piano + guitar and creating electronic music, taking photos, drawing and... dreaming :)<br>
-			<br>
-			That's all for now I guess.
-			`;
-			var rus_info = `
-			Приветствую. Меня зовут Иван Мовчан, или же AngelOfV0id. Мне 16 лет, живу в Санкт-Петербурге.<br>
-			<br>
-			Я увлекаюсь программированием, операционными системами и прочей компьютерной ерундистикой.
-			Начинал более пяти лет назад как разработчик простеньких игр и шуточных программ на Basic, Delphi и подобных языках программирования.
-			Сейчас занимаюсь системным программированием для Windows, изучаю C и развлекаюсь с веб-дизайном.<br>
-			<br>
-			Помимо программирования, я также играю на фортепиано и гитаре, пишу электронную музыку, занимаюсь любительской фотографией, люблю рисовать всякие приколы и... мечтать :)<br>
-			`;			
-			
-			function set_lang(lang_id)
-			{
-				if (lang_id === 0)
-				{
-					document.getElementById("info").innerHTML = eng_info;
-					document.getElementById("info_blog").innerHTML = "Blog";
-					document.getElementById("info_email").innerHTML = "E-mail";
-				};
-				if (lang_id === 1)
-				{
-					document.getElementById("info").innerHTML = rus_info;
-					document.getElementById("info_blog").innerHTML = "Блог";
-					document.getElementById("info_email").innerHTML = "Мыло";
-				};
-			}			
+			var birthDate = '02/18/2007'
+			var fullAge = Math.abs((new Date(Date.now() - (new Date(birthDate)).getTime()).getUTCFullYear() - 1970));
+			document.getElementById('age').innerText = fullAge;
 		</script>
 	</body>
 </html>

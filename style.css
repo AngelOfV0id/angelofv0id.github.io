@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+:root {
+	--bg:		#0f0f0f;
+	--fg:		#ffffff;
+	--link:		#ff8040;
+	--fadein:	0.1s ease;
+	--fadeout:	0.4s ease;
+}
+
+::selection { background: var(--link); color: var(--bg); }
+
+body {
+	font-family: 'Ubuntu', system-ui, sans-serif; font-size: 16px;
+	background: var(--bg); color: var(--fg);
+}
+
+a {
+	text-decoration: none; color: var(--fg);
+	transition: var(--fadeout);
+}
+a:hover {
+	cursor: pointer;
+	color: var(--link);
+	transition: var(--fadein);
+}
+
+h1, h2, h3, h4, h5, h6 { color: var(--link); font-weight: 300; }
+
+main { padding: 1em 0em; max-width: 50em; margin-left: auto; margin-right: auto; }
+
+.inline { display: inline; }
+
+.mono { font-family: 'Ubuntu Mono', monospace; }
+
+.menu { display: flex; justify-content: space-between; align-items: center; }
+.menuitem { padding: 4px 16px; }
+
+.light_text { font-weight: 300; }
+
+@media screen and (max-width: 640px)
+{
+	body { font-size: 14px; }
+}
