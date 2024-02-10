@@ -13,6 +13,7 @@
 body {
 	font-family: 'Fira Sans', system-ui, sans-serif; font-size: 18px;
 	background: var(--bg); color: var(--fg);
+	padding: 0; margin: 0;
 }
 
 a, b { font-weight: 500; }
@@ -41,7 +42,11 @@ hr { color: var(--link); }
 .mono { font-family: 'Fira Mono', monospace; }
 
 .menu { display: flex; flex-direction: row; align-items: center; }
-.menuitem { padding: 4px 24px; }
+.menuitem { padding: 4px 32px; }
 
 #avatar { width: 256px; }
-@media screen and (max-width: 720px) { header, footer { flex-direction: column; } }
+@media screen and (max-width: 720px) {
+	body { font-size: 16px; }
+	header, footer { flex-direction: column; margin: 16px 0px; }
+	.menuitem { padding: 4px 16px; }
+}
