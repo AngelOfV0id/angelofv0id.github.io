@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:ital@0;1&family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 :root {
 	--bg:		#0f0f0f;
-	--fg:		#ffffff;
-	--link:		#ff8040;
+	--fg:		#cccccc;
+	--link:		#ffffff;
 	--fadein:	0.1s ease;
 	--fadeout:	0.4s ease;
 }
@@ -11,9 +11,11 @@
 ::selection { background: var(--link); color: var(--bg); }
 
 body {
-	font-family: 'Ubuntu', system-ui, sans-serif; font-size: 16px;
+	font-family: 'Fira Sans', system-ui, sans-serif; font-size: 18px;
 	background: var(--bg); color: var(--fg);
 }
+
+a, b { font-weight: 500; }
 
 a {
 	text-decoration: none; color: var(--fg);
@@ -25,14 +27,21 @@ a:hover {
 	transition: var(--fadein);
 }
 
-h1, h2, h3, h4, h5, h6 { color: var(--link); font-weight: 300; }
+h1, h2, h3, h4, h5, h6 { color: var(--link); font-weight: 500; }
 
 main { padding: 1em 2em; max-width: 50em; margin-left: auto; margin-right: auto; }
+header, footer { display: flex; align-items: center; }
+header { justify-content: space-between; }
+footer { justify-content: space-around; }
+
+hr { color: var(--link); }
 
 .inline { display: inline; }
 
-.mono { font-family: 'Ubuntu Mono', monospace; }
+.mono { font-family: 'Fira Mono', monospace; }
 
-.light_text { font-weight: 300; }
+.menu { display: flex; flex-direction: row; align-items: center; }
+.menuitem { padding: 4px 24px; }
 
-@media screen and (max-width: 800px) { body { font-size: 12px; } }
+#avatar { width: 256px; }
+@media screen and (max-width: 720px) { header, footer { flex-direction: column; } }
